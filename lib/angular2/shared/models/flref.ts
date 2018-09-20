@@ -297,7 +297,7 @@ export class FireLoopRef<T> {
       resultEvent = `${this.parent.model.getModelName()}.${this.relationship}.value.result.${this.id}`;
     }
     this.socket.on(resultEvent, (res: any) => {
-      if (res.error) {
+      if (res && res.error) {
         subject.error(res);
       } else {
         subject.next(res);
